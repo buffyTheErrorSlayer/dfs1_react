@@ -11,15 +11,22 @@ export function ConferenceDashboard() {
   const navigate = useNavigate();
 
   async function getAllConfs() {
-    const res = await getAllConferences();
-    setConfList(res);
+    try {
+      const res = await getAllConferences();
+      setConfList(res);
+    } catch (err) {
+      console.error("Can't get conferences", err);
+    }
   }
 
   async function deleteConf(id) {
-    const res = await deleteConference(id, token);
-    if (res.status === 200) {
-      console.log("Conference supprimée avec succès");
-      getAllConfs();
+    try {
+      const res = await deleteConference(id, token);
+      if (res.status === 200) {
+        getAllConfs();
+      }
+    } catch (err) {
+      console.error("Can't delete:", err);
     }
   }
 
