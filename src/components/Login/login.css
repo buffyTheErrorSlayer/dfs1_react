@@ -1,0 +1,51 @@
+main.login .h1-container{
+    width: 20vw;
+    padding: 0 3%;
+    background-color: #4682f1;
+}
+
+main.login h1{
+    font-size: 15px;
+    color: white;
+    text-align: center;
+}
+
+main.login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10%;
+}
+
+main.login  .login-container{
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #4682f1;
+    padding: 3%;
+
+}
+
+main.login input, label{
+    margin: 2% 0;
+}
+
+main.login input{
+    width: 80%;
+    padding: 1% 2%;
+    border-radius: 10px;
+    border: 1px solid #4682f1;
+}
+
+main.login button{
+    width: 40%;
+    border-radius: 10px;
+    border: none;
+    background: #4682f1;
+    color: white;
+    padding: 1%;
+    margin-top: 5%;
+    cursor: pointer;
+}

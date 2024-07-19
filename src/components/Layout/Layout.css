@@ -1,0 +1,28 @@
+body{
+    margin: 0;
+}
+
+*{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+nav{
+    background-color: #4682f1;
+    color:white;
+    display: flex;
+}
+
+.nav-element{
+    margin: 0 10px;
+    padding: 10px;
+
+}
+
+.nav-element a{
+    text-decoration: none;
+    color: white;
+}
+
+.nav-element a:hover{
+    color: #95b4ee ;
+}
