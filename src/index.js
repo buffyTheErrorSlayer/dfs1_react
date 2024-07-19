@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route, Navigate  } from "react-router-dom";
-import {Layout, Home, Login, ConferenceDashboard, UserDashboard, Conference, ConferenceForm} from "./components";
+import {Layout, Home, Login, ConferenceDashboard, UserDashboard, Conference, ConferenceForm } from "./components";
 
 export default function App() {
 

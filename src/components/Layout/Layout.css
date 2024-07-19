@@ -10,7 +10,9 @@ nav{
     background-color: #4682f1;
     color:white;
     display: flex;
+    align-items: center;
 }
+
 
 .nav-element{
     margin: 0 10px;
@@ -25,4 +27,9 @@ nav{
 
 .nav-element a:hover{
     color: #95b4ee ;
+}
+
+.logout{
+    margin: 0;
+    background-color: #000000;
 }
