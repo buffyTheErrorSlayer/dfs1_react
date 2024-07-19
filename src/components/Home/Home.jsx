@@ -7,10 +7,14 @@ export function Home() {
     const [confList, setConfList] = useState([])
     const navigate = useNavigate();
 
-    async function getAllConfs(){
-        const res = await getAllConferences();
-        setConfList(res)
-    }
+    async function getAllConfs() {
+        try {
+          const res = await getAllConferences();
+          setConfList(res);
+        } catch (err) {
+          console.error("Can't get conferences :", err);
+        }
+      }
 
 
     useEffect(() => {
