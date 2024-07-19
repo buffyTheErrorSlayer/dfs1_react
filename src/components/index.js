@@ -1,3 +1,6 @@
 export * from './Layout/Layout'
 export * from './Home/Home'
 export * from './Login/login'
+export * from './Conference/Conference'
+export * from './Admin/Conference/ConferenceDashboard'
+export * from './Admin/User/UserDashboard'

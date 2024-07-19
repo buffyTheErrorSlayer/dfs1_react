@@ -1,17 +1,13 @@
 import {useState, useEffect} from 'react'
-import { useNavigate } from "react-router-dom";
-import "./Home.css"
-import {getAllConferences} from '../../services/conference'
-export function Home() {
+import {getAllConferences} from '../../../services/conference'
+export function ConferenceDashboard() {
 
     const [confList, setConfList] = useState([])
-    const navigate = useNavigate();
 
     async function getAllConfs(){
         const res = await getAllConferences();
         setConfList(res)
     }
-
 
     useEffect(() => {
         getAllConfs();
@@ -38,10 +34,10 @@ export function Home() {
                             <td>
                                 {conf.title}
                             </td>
-                            <td className='buttons'>
-                                <button onClick={() => {
-                                    navigate(`conferences/${conf.id}`)
-                                }} className='default'>Voir les détails</button>                  
+                            <td>
+                                <button className='default'>Voir les détails</button>
+                                <button className='edit' onClick={() => console.log( "Modifier la conférence :", conf)}>Modifier</button>
+                <button className='delete' onClick={() => console.log("Supprimer la conférence :", conf)}>Supprimer</button>                  
                             </td>
                         </tr>
                     ))
