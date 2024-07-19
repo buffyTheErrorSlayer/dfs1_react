@@ -14,20 +14,23 @@ export function Conference() {
   const token = localStorage.getItem("token");
 
   async function getConf() {
-    const res = await getConference(id);
-    setConf(res);
-    console.log(conf)
+    try {
+      const res = await getConference(id);
+      setConf(res);
+    } catch (error) {
+      console.error("Can't get conf :", error);
+    }
   }
 
 
-  async function saveConf()
-  {
-
-    const res = await updateConference(id, conf, token);
-    getConf()
-    setIsEditMode(false)
-    navigate("/admin/conference")
-
+  async function saveConf() {
+    try {
+      await updateConference(id, conf, token);
+      setIsEditMode(false);
+      navigate("/admin/conference");
+    } catch (error) {
+      console.error("Can't save conf :", error);
+    }
   }
 
   
@@ -41,6 +44,15 @@ export function Conference() {
     const { name, value } = e.target;
     setConf((prevConf) => ({ ...prevConf, [name]: value }));
 }
+
+function handleNestedInputChange(e, index, field, subField) {
+    const { value } = e.target;
+    setConf((prevConf) => {
+      const updatedField = [...prevConf[field]];
+      updatedField[index] = { ...updatedField[index], [subField]: value };
+      return { ...prevConf, [field]: updatedField };
+    });
+  }
 
   useEffect(() => {
     getConf();
@@ -106,9 +118,9 @@ export function Conference() {
               <div key={sp.id}>
                 {
                     isEditMode ? 
-                      <><input type="text"  defaultValue={sp.firstname} onChange={handleInputChange} /> 
+                      <><input type="text"  defaultValue={sp.firstname} onChange={(e) => handleNestedInputChange(e, index, 'speakers', 'firstname')} /> 
                       
-                      <input type="text" defaultValue={sp.lastname}  onChange={handleInputChange}/></>
+                      <input type="text" defaultValue={sp.lastname} onChange={(e) => handleNestedInputChange(e, index, 'speakers', 'lastname')} /></>
                     :
                      <> {sp.firstname} {sp.lastname}</>
                     
@@ -127,11 +139,11 @@ export function Conference() {
               <div key={sh.id}>
               {
                     isEditMode ? 
-                      <><input type="text"  defaultValue={sh.firstname} onChange={handleInputChange} /> 
+                      <><input type="text"  defaultValue={sh.firstname}  onChange={(e) => handleNestedInputChange(e, index, 'stakeholders', 'firstname')} /> 
                       
-                      <input type="text"  defaultValue={sh.lastname} onChange={handleInputChange}/> 
+                      <input type="text"  defaultValue={sh.lastname}  onChange={(e) => handleNestedInputChange(e, index, 'stakeholders', 'lastname')}/> 
                       
-                      <input type="text" defaultValue={sh.job} onChange={handleInputChange} /> </>
+                      <input type="text" defaultValue={sh.job}  onChange={(e) => handleNestedInputChange(e, index, 'stakeholders', 'job')} /> </>
                     :
                      <> {sh.firstname} {sh.lastname} - {sh.job} </>
                     

@@ -15,11 +15,9 @@ export async function getConference(id){
 }
 
 
-export async function addConference(conf){
+export async function addConference(conf, token){
 
-    const res = await axios.post(`http://localhost:4555/signup/`, {
-        conf
-    } )
+    const res = await axios.post(`http://localhost:4555/conference`, conf, { 'headers': { 'Authorization': `Bearer ${token}`  } })
 
     return res
 }

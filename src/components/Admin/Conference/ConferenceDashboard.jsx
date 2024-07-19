@@ -31,12 +31,17 @@ export function ConferenceDashboard() {
     <>
       <main className="conference">
         <h1>Liste des conférences</h1>
+
+        <button className="save" onClick={() =>{navigate("/admin/conference/add")}}>+ Ajouter</button>
         <table>
+          <thead>
           <tr>
             <th>Titre</th>
             <th>Actions</th>
           </tr>
+          </thead>
           <>
+            <tbody>
             {confList.map((conf) => (
               <tr key={conf.id}>
                 <td>{conf.title}</td>
@@ -61,7 +66,7 @@ export function ConferenceDashboard() {
                     >
                       Modifier
                     </button>
-                    
+
                     <button
                       className="delete"
                       onClick={() => {
@@ -74,6 +79,7 @@ export function ConferenceDashboard() {
                 </td>
               </tr>
             ))}
+            </tbody>
           </>
         </table>
       </main>
