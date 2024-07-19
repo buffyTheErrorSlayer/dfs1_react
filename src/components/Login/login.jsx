@@ -17,9 +17,7 @@ export function Login(){
         const res = await login(username, password);
         if (res){
             const admin =  await isAdmin(res)
-            console.log(admin)
             admin ? localStorage.setItem("admin", true) : localStorage.setItem("admin", false)
-
             return navigate("/")
         }
 

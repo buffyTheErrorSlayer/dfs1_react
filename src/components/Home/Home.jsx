@@ -23,6 +23,7 @@ export function Home() {
         <main className="conference">
             <h1>Liste des conférences</h1>
             <table>
+                <thead>
                 <tr>
                     <th>
                         Titre
@@ -31,6 +32,8 @@ export function Home() {
                         Actions
                     </th>
                 </tr>
+                </thead>
+                <tbody>
                 <>
                 {
                     confList.map((conf) => (
@@ -40,13 +43,14 @@ export function Home() {
                             </td>
                             <td className='buttons'>
                                 <button onClick={() => {
-                                    navigate(`conferences/${conf.id}`)
+                                    navigate(`conference/${conf.id}`)
                                 }} className='default'>Voir les détails</button>                  
                             </td>
                         </tr>
                     ))
                 }
                 </>
+                </tbody>
             </table>
         </main>
         </>
