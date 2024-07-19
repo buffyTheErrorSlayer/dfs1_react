@@ -24,4 +24,19 @@ export async function addConference(conf){
     return res
 }
 
+export async function deleteConference(id, token){
+
+    const res = await axios.delete(`http://localhost:4555/conference/${id}`, { 'headers': { 'Authorization': `Bearer ${token}`  } })
+
+    return res.data
+}
+
+export async function updateConference(id, conf, token){
+
+    const res = await axios.patch(`http://localhost:4555/conference/${id}`, conf, { 'headers': { 'Authorization': `Bearer ${token}`  } })
+
+    return res.data
+}
+
+
 

@@ -44,7 +44,7 @@ export function Home() {
                             <td className='buttons'>
                                 <button onClick={() => {
                                     navigate(`conference/${conf.id}`)
-                                }} className='default'>Voir les détails</button>                  
+                                }} className='default'>Détails</button>                  
                             </td>
                         </tr>
                     ))
