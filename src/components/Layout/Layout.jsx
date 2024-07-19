@@ -1,19 +1,28 @@
-import { Outlet, Link } from "react-router-dom";
-import { useState, useEffect} from 'react'
+import { Outlet, Link, useLocation } from "react-router-dom";
+import { useState, useEffect } from 'react'
 import { isAdmin } from "../../services/user"
 import "./Layout.css"
 export function Layout() {
   const token = localStorage.getItem("token");
   const [isAdminUser, setIsAdminUser] = useState(false)
 
-  useEffect(() => {
-    const checkAdminStatus = async () => {
-      const admin = await isAdmin(token);
-      setIsAdminUser(admin);
-    };
+  const location = useLocation();
 
+  async function checkAdminStatus() {
+    const admin = await isAdmin(token);
+    setIsAdminUser(admin);
+  }
+
+  useEffect(() => {
     checkAdminStatus();
   }, [token]);
+
+  useEffect(() => {
+    if (location.state?.newLogin) {
+      checkAdminStatus();
+    }
+  }, [location]);
+
 
 
   return (
