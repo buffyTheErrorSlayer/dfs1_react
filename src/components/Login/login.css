@@ -49,3 +49,7 @@ main.login button{
     margin-top: 5%;
     cursor: pointer;
 }
+
+.error-message{
+    color: #f17146;
+}
