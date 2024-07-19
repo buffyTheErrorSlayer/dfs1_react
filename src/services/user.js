@@ -41,5 +41,12 @@ export async function isAdmin(token)
     return res.data.isAdmin
 }
 
+export async function changePermission(id, body, token)
+{
+    
+    const res = await axios.patch(`http://localhost:4555/usertype/${id}`, body, { 'headers': { 'Authorization': `Bearer ${token}`  } } )
+
+    return res.data
+}
 
 
