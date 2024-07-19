@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+
+  web:
+    image: eltwingo/mns:latest
+    working_dir: /app
+    ports:
+      - "4555:80"
+    depends_on:
+      - db
+
+  db:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME:root
+      - ME_CONFIG_MONGODB_ADMINPASSWORD:root
+    volumes:
+      - mongo-data:/mongo
+
+volumes:
+  mongo-data:
