@@ -1,29 +1,29 @@
 import axios from "axios";
 
-export async function getAllUsers(){
+export async function getAllUsers(token){
 
-    const res = await axios.get(`http://localhost:4555/users`)
+    const res = await axios.get(`http://localhost:4555/users`, { 'headers': { 'Authorization': `Bearer ${token}`  } } )
 
-    return res
+    return res.data
 }
 
 
-export async function addUser(id, password){
+// export async function addUser(id, password){
 
-    const res = await axios.post(`http://localhost:4555/signup/`, {
-        id : id, password : password
-    } )
+//     const res = await axios.post(`http://localhost:4555/signup/`, {
+//         id : id, password : password
+//     } )
 
-    return res
-}
-export async function addAdmin(id, password){
+//     return res
+// }
+// export async function addAdmin(id, password){
 
-    const res = await axios.post(`http://localhost:4555/signupadmin/`, {
-        id : id, password : password
-    } )
+//     const res = await axios.post(`http://localhost:4555/signupadmin/`, {
+//         id : id, password : password
+//     } )
 
-    return res
-}
+//     return res
+// }
 
 
 export async function login(id, password){
